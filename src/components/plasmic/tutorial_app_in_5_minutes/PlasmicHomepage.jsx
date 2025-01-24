@@ -37,6 +37,7 @@ import { FormWrapper } from "@plasmicpkgs/antd5/skinny/Form";
 import { formHelpers as FormWrapper_Helpers } from "@plasmicpkgs/antd5/skinny/Form";
 import { FormItemWrapper } from "@plasmicpkgs/antd5/skinny/FormItem";
 import { AntdInput } from "@plasmicpkgs/antd5/skinny/registerInput";
+import { inputHelpers as AntdInput_Helpers } from "@plasmicpkgs/antd5/skinny/registerInput";
 import { AntdButton } from "@plasmicpkgs/antd5/skinny/registerButton";
 import "@plasmicapp/react-web/lib/plasmic.css";
 import plasmic_antd_5_hostless_css from "../antd_5_hostless/plasmic.module.css"; // plasmic-import: ohDidvG9XsCeFumugENU3J/projectcss
@@ -117,6 +118,13 @@ function PlasmicHomepage__RenderFunc(props) {
         initFunc: ({ $props, $state, $queries, $ctx }) => false,
         refName: "form",
         onMutate: generateOnMutateForSpec("isSubmitting", FormWrapper_Helpers)
+      },
+      {
+        path: "input.value",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        onMutate: generateOnMutateForSpec("value", AntdInput_Helpers)
       }
     ],
 
@@ -458,7 +466,7 @@ function PlasmicHomepage__RenderFunc(props) {
                         <FormItemWrapper
                           className={classNames(
                             "__wab_instance",
-                            sty.formField__hysMs
+                            sty.formField__ubaR3
                           )}
                           label={"Contact name"}
                           name={"contact_name"}
@@ -466,14 +474,14 @@ function PlasmicHomepage__RenderFunc(props) {
                           <AntdInput
                             className={classNames(
                               "__wab_instance",
-                              sty.input__hBlA0
+                              sty.input__n23ZA
                             )}
                           />
                         </FormItemWrapper>
                         <FormItemWrapper
                           className={classNames(
                             "__wab_instance",
-                            sty.formField__b2Ud7
+                            sty.formField___3L3MM
                           )}
                           label={"Contact title"}
                           name={"contact_title"}
@@ -481,14 +489,14 @@ function PlasmicHomepage__RenderFunc(props) {
                           <AntdInput
                             className={classNames(
                               "__wab_instance",
-                              sty.input__kcunN
+                              sty.input__vCyLz
                             )}
                           />
                         </FormItemWrapper>
                         <FormItemWrapper
                           className={classNames(
                             "__wab_instance",
-                            sty.formField__skk15
+                            sty.formField__rCyfB
                           )}
                           label={"Company name"}
                           name={"company_name"}
@@ -496,7 +504,7 @@ function PlasmicHomepage__RenderFunc(props) {
                           <AntdInput
                             className={classNames(
                               "__wab_instance",
-                              sty.input__jKeWs
+                              sty.input__hjMap
                             )}
                           />
                         </FormItemWrapper>
@@ -518,6 +526,40 @@ function PlasmicHomepage__RenderFunc(props) {
                       </FormWrapper>
                     );
                   })()}
+                  {(() => {
+                    const child$Props = {
+                      className: classNames("__wab_instance", sty.input),
+                      onChange: async (...eventArgs) => {
+                        generateStateOnChangePropForCodeComponents(
+                          $state,
+                          "value",
+                          ["input", "value"],
+                          AntdInput_Helpers
+                        ).apply(null, eventArgs);
+                      },
+                      value: generateStateValueProp($state, ["input", "value"])
+                    };
+                    initializeCodeComponentStates(
+                      $state,
+                      [
+                        {
+                          name: "value",
+                          plasmicStateName: "input.value"
+                        }
+                      ],
+
+                      [],
+                      AntdInput_Helpers ?? {},
+                      child$Props
+                    );
+                    return (
+                      <AntdInput
+                        data-plasmic-name={"input"}
+                        data-plasmic-override={overrides.input}
+                        {...child$Props}
+                      />
+                    );
+                  })()}
                 </React.Fragment>
               )}
             </DataCtxReader__>
@@ -529,12 +571,13 @@ function PlasmicHomepage__RenderFunc(props) {
 }
 
 const PlasmicDescendants = {
-  root: ["root", "pageLayout", "table", "form", "button", "text"],
-  pageLayout: ["pageLayout", "table", "form", "button", "text"],
+  root: ["root", "pageLayout", "table", "form", "button", "text", "input"],
+  pageLayout: ["pageLayout", "table", "form", "button", "text", "input"],
   table: ["table"],
   form: ["form", "button", "text"],
   button: ["button", "text"],
-  text: ["text"]
+  text: ["text"],
+  input: ["input"]
 };
 
 function makeNodeComponent(nodeName) {
@@ -574,6 +617,7 @@ export const PlasmicHomepage = Object.assign(
     form: makeNodeComponent("form"),
     button: makeNodeComponent("button"),
     text: makeNodeComponent("text"),
+    input: makeNodeComponent("input"),
     // Metadata about props expected for PlasmicHomepage
     internalVariantProps: PlasmicHomepage__VariantProps,
     internalArgProps: PlasmicHomepage__ArgProps,
